@@ -1,0 +1,33 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <h1>Create page</h1>
+  
+  <div class="form-control">
+    <label for="title">
+      <span>Title:</span>
+      <input type="text" name="title" id="title" formControlName="title">
+    </label>
+    <div *ngIf="form.get('title').touched && form.get('title').invalid" class="validation">
+      <small *ngIf="form.get('title').errors.required">Title is required</small>
+    </div>
+  </div>
+
+  <div class="form-control">
+    <label>Post content:</label>
+    <ckeditor [editor]="Editor" formControlName="text" placeholder="Type the content here!"></ckeditor>
+
+
+  </div>
+
+  <div class="form-control">
+    <label for="author">
+      <span>Title:</span>
+      <input type="text" name="author" id="author" formControlName="author">
+    </label>
+    <div *ngIf="form.get('author').touched && form.get('author').invalid" class="validation">
+      <small *ngIf="form.get('author').errors.required">Author is required</small>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-dark" [disabled]="form.invalid">Create Post</button>
+
+</form>
